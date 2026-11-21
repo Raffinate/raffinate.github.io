@@ -19,13 +19,12 @@ const socialImageURL = new URL(withBase(ogImage ?? "/social-card.png"), Astro.ur
 <meta content="width=device-width, initial-scale=1.0" name="viewport" />
 <title>{siteTitle}</title>
 
-{/* Icons */}
-<link href={withBase("/icon.svg")} rel="icon" type="image/svg+xml" />
+{/* Tab icon (public/favicon.ico, works in every browser) */}
+<link href={withBase("/favicon.ico")} rel="icon" />
 {
 	import.meta.env.PROD && (
 		<>
-			{/* Favicon & Apple Icon, Generated at build */}
-			<link rel="icon" href={withBase("/favicon-32x32.png")} type="image/png" />
+			{/* Home-screen icon, generated at build from public/icon.svg */}
 			<link href={withBase("/icons/apple-touch-icon.png")} rel="apple-touch-icon" />
 			{/* Manifest */}
 			<link href={withBase("/manifest.webmanifest")} rel="manifest" />
