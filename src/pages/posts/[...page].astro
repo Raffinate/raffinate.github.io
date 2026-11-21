@@ -37,7 +37,7 @@ const { page, uniqueTags, pinnedPosts } = Astro.props;
 
 const meta = {
 	description: "Read my collection of posts and the things that interest me",
-	title: "Posts",
+	title: "Blog",
 };
 
 const paginationProps = {
@@ -61,7 +61,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 
 <PageLayout meta={meta}>
 	<div class="mb-12 flex items-center gap-3">
-		<h1 class="title">Posts</h1>
+		<h1 class="title">Blog</h1>
 		<a class="text-accent" href={withBase("/rss.xml")} target="_blank">
 			<span class="sr-only">RSS feed</span>
 			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
@@ -69,6 +69,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 	</div>
 	<div class="grid sm:grid-cols-[3fr_1fr] sm:gap-x-8 sm:gap-y-16">
 		<div>
+			{page.data.length === 0 && <p class="text-muted">No posts yet.</p>}
 			{
 				pinnedPosts.length > 0 && (
 					<section class="mb-16">

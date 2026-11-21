@@ -32,8 +32,17 @@ export const siteConfig: SiteConfig = {
 };
 
 // Used to generate links in both the Header & Footer.
-// Only the home page for now. Add { path: "/posts/", title: "Blog" } etc. when needed.
-export const menuLinks: { path: string; title: string }[] = [];
+// Used to generate links in both the Header & Footer.
+export const menuLinks: { path: string; title: string }[] = [
+	{
+		path: "/",
+		title: "Things",
+	},
+	{
+		path: "/posts/",
+		title: "Blog",
+	},
+];
 
 // https://expressive-code.com/reference/configuration/
 export const expressiveCodeOptions: AstroExpressiveCodeOptions = {
