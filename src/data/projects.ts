@@ -26,7 +26,7 @@ export const projects: Project[] = [
 	},
 	{
 		title: "Snooker Aim Trainer",
-		description: "Practice snooker aiming in the browser.",
+		description: "A 3D game for practicing snooker aiming in the browser.",
 		url: pages("snookeraim"),
 		repo: repo("snookeraim"),
 	},
