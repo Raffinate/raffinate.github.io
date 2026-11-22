@@ -36,13 +36,20 @@ const latestNotes = (await getCollection("note"))
 				projects.map((p) => (
 					<li class="bg-global-text/5 hover:bg-global-text/10 relative flex flex-col rounded-md px-4 py-3 transition-colors">
 						<h3 class="font-semibold">
-							<a class="cactus-link after:absolute after:inset-0" href={p.url}>
+							<a
+								class="cactus-link after:absolute after:inset-0"
+								data-ph-capture-attribute-project={p.title}
+								data-ph-capture-attribute-link="app"
+								href={p.url}
+							>
 								{p.title}
 							</a>
 						</h3>
 						<p class="text-muted mt-1 mb-3 text-sm">{p.description}</p>
 						<a
 							class="hover:text-link text-muted relative z-10 mt-auto inline-flex items-center gap-x-1 self-start text-xs"
+							data-ph-capture-attribute-project={p.title}
+							data-ph-capture-attribute-link="source"
 							href={p.repo}
 							rel="noreferrer"
 							target="_blank"

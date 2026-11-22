@@ -31,7 +31,15 @@ export const siteConfig: SiteConfig = {
 	},
 };
 
-// Used to generate links in both the Header & Footer.
+// PostHog analytics (page views + clicks), loaded by src/components/Analytics.astro in production builds.
+// apiKey: the project API key (phc_...) from PostHog → Project settings. It is public, safe to commit.
+// Leave it empty to turn analytics off. apiHost: https://eu.i.posthog.com or https://us.i.posthog.com,
+// matching the region of the PostHog project.
+export const posthogConfig = {
+	apiKey: "phc_ohN6L9dWEEsU5vs4xycnopj4oELq4eREkEwHdUjxNhoR",
+	apiHost: "https://eu.i.posthog.com",
+};
+
 // Used to generate links in both the Header & Footer.
 export const menuLinks: { path: string; title: string }[] = [
 	{

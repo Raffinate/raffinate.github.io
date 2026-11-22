@@ -1,0 +1,43 @@
+<script>
+	import { posthogConfig } from "@/site.config";
+
+	async function start() {
+		const { default: posthog } = await import("posthog-js");
+		posthog.init(posthogConfig.apiKey, {
+			api_host: posthogConfig.apiHost,
+			// What we collect: page views, time on page and clicks.
+			capture_pageview: true,
+			capture_pageleave: true,
+			autocapture: true,
+			// Everything else off: no replays, surveys, heatmaps, web vitals, errors, flags or extra scripts.
+			disable_session_recording: true,
+			disable_surveys: true,
+			disable_product_tours: true,
+			disable_conversations: true,
+			disable_web_experiments: true,
+			capture_heatmaps: false,
+			capture_dead_clicks: false,
+			capture_performance: false,
+			capture_exceptions: false,
+			advanced_disable_flags: true,
+			disable_external_dependency_loading: true,
+			// Cookieless: no cookies or browser storage, so no consent banner is needed. PostHog counts
+			// visitors with a server-side privacy-preserving hash instead.
+			// Requires cookieless mode to be enabled in the PostHog project settings too, otherwise
+			// PostHog drops every event.
+			cookieless_mode: "always",
+			person_profiles: "identified_only",
+		});
+	}
+
+	if (import.meta.env.PROD && posthogConfig.apiKey) {
+		// Speculation rules (src/layouts/Base.astro) prerender pages, which runs their scripts
+		// before the visitor opens them. Wait until the page is shown so prerenders don't count.
+		// `document.prerendering` isn't in TypeScript's DOM types yet.
+		if ((document as Document & { prerendering?: boolean }).prerendering) {
+			document.addEventListener("prerenderingchange", () => void start(), { once: true });
+		} else {
+			void start();
+		}
+	}
+</script>
