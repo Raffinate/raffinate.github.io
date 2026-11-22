@@ -37,7 +37,7 @@ const { page, uniqueTags, pinnedPosts } = Astro.props;
 
 const meta = {
 	description: "Read my collection of posts and the things that interest me",
-	title: "Blog",
+	title: "Thoughts",
 };
 
 const paginationProps = {
@@ -61,7 +61,7 @@ const descYearKeys = Object.keys(groupedByYear).sort((a, b) => +b - +a);
 
 <PageLayout meta={meta}>
 	<div class="mb-12 flex items-center gap-3">
-		<h1 class="title">Blog</h1>
+		<h1 class="title">Thoughts</h1>
 		<a class="text-accent" href={withBase("/rss.xml")} target="_blank">
 			<span class="sr-only">RSS feed</span>
 			<Icon aria-hidden="true" class="h-6 w-6" focusable="false" name="mdi:rss" />
