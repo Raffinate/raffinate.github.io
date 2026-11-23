@@ -18,6 +18,13 @@ export const projects: Project[] = [
 		repo: repo("boatpolar"),
 	},
 	{
+		title: "Sailgrid",
+		description:
+			"A turn-based sailing regatta on grid paper. Pick a real boat, play the wind shifts and race AI boats or friends.",
+		url: pages("sailgrid"),
+		repo: repo("sailgrid"),
+	},
+	{
 		title: "Doubt It",
 		description:
 			"The bluffing card game with a revolver twist. Play against GTO-trained AI solvers or a friend.",
